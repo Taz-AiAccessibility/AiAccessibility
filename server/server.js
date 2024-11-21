@@ -4,9 +4,10 @@ import {
   openAiImageProcessing,
 } from './controllers/imageProcessingController.js';
 import openAiAltTextController from './controllers/openAiAltTextController.js';
+import userQueryTextController from './controllers/userQueryController.js'
 
 const { queryOpenAI } = openAiAltTextController;
-
+const { parseUserQuery } = userQueryTextController;
 //import is compatible everywhere,
 // where as "require" is only usable under certain circumstances so unless you are working
 //with a legacy codebase that already uses "require" you should use "import" instead.
@@ -19,7 +20,7 @@ app.use(express.json());
 
 app.post(
   '/alt-text',
-  //userQuery,
+  parseUserQuery,
   openAiImageProcessing,
   queryOpenAI,
   (req, res) => {

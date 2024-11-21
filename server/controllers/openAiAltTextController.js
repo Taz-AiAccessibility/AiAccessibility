@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import OpenAI from 'openai';
-//import ImageURLInput from '../../src/components/ImageURLInput.jsx';
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
@@ -19,13 +18,6 @@ openAiAltTextController.queryOpenAI = async (req, res, next) => {
   Format of your response:
   Once you have read the image analysis, respond with the alt text. Format the output as a JSON object with the properties simple and complex. The value of simple should be a string with a less detailed version of the alt text, and the value of complex should be a string with a more detailed version of the alt text. This gives the user two options, based on their use case. You should not include any other words or punctuation other than the valid JSON object in your response. Do not include line breaks.
 `;
-
-//   example input: 'The image features a young deer, commonly known as a fawn, standing in a field filled with flowers. The fawn has a spotted coat and is surrounded by greenery and blooming flowers, creating a picturesque natural scene.""imageUrl": "https://www.smuinballet.org/app/uploads/maggie-scaled.jpg" }  
-//   example output: 
-//  {
-//   "simple": "A young deer standing in a flower-filled field.",
-//   "complex": "A young deer, known as a fawn, stands gracefully in a vibrant field filled with various blooming flowers. The fawn has a soft, spotted coat and is surrounded by lush greenery, creating a serene and picturesque natural setting."
-
   
 	if (!imageAnalysis) {
 		console.log('imageAnalysis not found');

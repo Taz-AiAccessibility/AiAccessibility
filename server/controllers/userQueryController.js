@@ -3,8 +3,14 @@ import 'dotenv/config';
 const userQueryController = {};
 
 userQueryController.parseUserQuery = async (req, res, next) => {
+  console.log('pareUserQuery middlware');
+  const userUrl = req.body.userUrl;
+  const imageContext = req.body.imageContext;
+  const textContext = req.body.textContext;
+
   //check the request body for userURL
-  if (!req.body.userURL) {
+  if (!userUrl) {
+    console.log('error in userQuery ', { userUrl });
     return next({
       log: 'User URL not found',
       status: 500,
@@ -14,10 +20,6 @@ userQueryController.parseUserQuery = async (req, res, next) => {
     });
   }
   //check if the body contains image context and text context, give it a default value if it doesnt exisit
-
-  const userUrl = req.body.userURL;
-  const imageContext = req.body.imageContext || 'no image context provided';
-  const textContext = req.body.textContext || 'no text content provided';
 
   res.locals.userUrl = userUrl;
   res.locals.imageContext = imageContext;
