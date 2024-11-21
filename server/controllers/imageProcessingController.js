@@ -6,11 +6,8 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const AZURE_ENDPOINT = process.env.AZURE_ENDPOINT;
-const AZURE_API_KEY = process.env.AZURE_API_KEY;
-
 export const openAiImageProcessing = async (req, res, next) => {
-  const imageUrl = 'https://www.smuinballet.org/app/uploads/maggie-scaled.jpg';
+  const imageUrl = 'https://www.humanesociety.org/sites/default/files/styles/360_max_width/public/2018/08/fawn-deer-272319_0.jpg?itok=RAcMGyqT';
 
   const response = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
@@ -38,6 +35,7 @@ export const openAiImageProcessing = async (req, res, next) => {
   console.log('data from open ai', data);
 
   res.locals.imageAnalysis = data;
+  console.log(data)
   return next();
 };
 
@@ -82,7 +80,8 @@ export const azureImageProcessing = async (req, res, next) => {
 };
 
 // import OpenAI from 'openai';
-
+// const AZURE_ENDPOINT = process.env.AZURE_ENDPOINT;
+// const AZURE_API_KEY = process.env.AZURE_API_KEY;
 // const openai = new OpenAI();
 
 // async function main() {
