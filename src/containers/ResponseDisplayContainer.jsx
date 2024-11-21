@@ -1,15 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
+
 //import child components
 import ImageDisplay from '../components/ImageDisplay.jsx';
 import ResponseDisplay from '../components/ResponseDisplay.jsx';
 
-const ResponseDisplayContainer = ({imageURL, serverResponse}) => {
+const ResponseDisplayContainer = ({imageURL, serverResponse, userSubmitted}) => {
 
-  //hardcoded examples for testing purposes
-const shortResponse = "Two fish swimming in ocean.";
-const longResponse = "Marlin and Dory, the two main characters of Finding Nemo, swimming in front of some ocean plants."
-
+  if(userSubmitted){
   return (
     <div className='responseDisplayContainer'>
       <ImageDisplay imageURL={imageURL}/>
@@ -17,6 +15,8 @@ const longResponse = "Marlin and Dory, the two main characters of Finding Nemo, 
       <ResponseDisplay key={'2'} responseType={'Detailed Alt Text'} responseText={serverResponse.complex}/>
     </div>
   );
+}
+else return;
 };
 
 export default ResponseDisplayContainer;
