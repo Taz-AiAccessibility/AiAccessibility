@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import {
-  azureImageProcessing,
   openAiImageProcessing,
 } from './controllers/imageProcessingController.js';
 import openAiAltTextController from './controllers/openAiAltTextController.js';
@@ -24,16 +23,15 @@ app.post(
   openAiImageProcessing,
   queryOpenAI,
   (req, res) => {
-    const altText = res.locals.altText;
+   // const simple = res.locals.simple;
     //const altText = 'alt test';
-    const details = res.locals.details;
+    //const complex = res.locals.complex;
     //const details = 'alt details';
     const analysisResult = res.locals.analysisResult;
-    console.log(analysisResult);
-    return res.status(200).json({ altText, details });
-  }
-);
-
+    // return res.status(200).json(analysisResult); 
+    return res.status(200).send(analysisResult);
+  });
+ 
 // app.post('/alt-text', (req, res) => {
 //   console.log('hello');
 //   res.status(200).json({ hello: 'hello' });
