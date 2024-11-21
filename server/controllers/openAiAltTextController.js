@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import OpenAI from 'openai';
+//import ImageURLInput from '../../src/components/ImageURLInput.jsx';
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
@@ -8,13 +9,11 @@ const openai = new OpenAI({
 const openAiAltTextController = {};
 
 openAiAltTextController.queryOpenAI = async (req, res, next) => {
-	const imageContext = ``; //providing more context for what is inside the image
-	const textContext = ``; //providing information about who is the audience that this alt text is specifically being written for
 
 	console.log('open ai controller');
 
 	//const { imageContext, textContext } = res.locals;
-	const { imageAnalysis } = res.locals; //this will be receive from the azureController
+	const { imageAnalysis, imageContext, textContext } = res.locals; //this will be receive from the Controller, imageContext = provides more context for what is inside the image and textContext = provides information about who is the audience that this alt text is specifically being written for
 	const prompt = `Directions: 
   You are a professional creating alt text for an img tag within CSS code. This alt text will be used by screen-readers to describe images to people who are visually impaired. Start by reading the ${imageAnalysis}, this is the description of the image. Then, read the ${imageContext}, if provided, this is further context about the image provided by the user. Finally, read the ${textContext}, if provided, this is information about what audience the alt text is for. While the alt text is always for people who are visually impaired, this will tell you what the targeted demographic is. What you should consider is that if the text is for children, then use simpler more elementary language, if it is for a more professional demographic, then use more corporate language, for artists then use more descriptive, poetic language, etc- if ${textContext} is an empty string then assume it is for a general audience and maintain a descriptive, informative, but professional tone.
   Format of your response:

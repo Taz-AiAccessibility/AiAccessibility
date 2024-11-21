@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import {
-  azureImageProcessing,
   openAiImageProcessing,
 } from './controllers/imageProcessingController.js';
 import openAiAltTextController from './controllers/openAiAltTextController.js';
