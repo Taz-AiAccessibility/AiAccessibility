@@ -16,7 +16,7 @@ function App() {
     complex: 'default',
   });
   //userSubmitted state tracks whether or not a user has submitted their request - this determines whether or not the Response Display Container renders
-  const [userSubmitted, setUserSubmitted] = useState(false);
+  const [userSubmitted, setUserSubmitted] = useState(true);
 
   return (
     <div className='fullPage'>

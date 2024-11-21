@@ -1,6 +1,8 @@
 /* overall page display stuff */
 body {
-  background-color: #009cc4;
+  background-color: #f2e9e47a;
+  color: #22223b;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* user input display stuff */
@@ -8,48 +10,92 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #000000;
-  background-color: #ffffff;
-  padding: 5px;
-  margin: 10px;
+  /* border: 2px solid #000000; */
+  border: 1px solid transparent; /* Transparent border */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(200, 183, 183, 0.5); /* Glow effect */
+  padding: 20px;
+  margin: 20px;
+  background-color: #f2e9e4;
+  /* padding: 5px; */
+  /* margin: 10px; */
 }
 
 /*All 3 input boxes fall under inputBox class */
 .inputBox {
-  border: 2px solid #000000;
-  padding: 5px;
+  /* border: 2px solid #000000; */
+  border: none; /* Optional: Remove border */
+  border-radius: 10px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06); Layered shadow */
+  padding: 20px;
+  background-color: #f2e9e4; /* Add background for card-like effect */
+  /* padding: 5px; */
   margin: 10px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 8px;
+  /* transition: all 0.3s ease; */
+}
+#imageURLInput {
+  width: 80%;
+  height: 50px;
+}
+input {
+  width: 80%;
+  height: 30px;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #22223b;
+  /* transition: all 0.3s ease; */
 }
 
 .userInputButtons {
   align-self: stretch;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row-reverse;
+  /* justify-content: space-between;
+  align-items: ; */
 }
 
 .button {
-  padding: 5px;
+  /* padding: 5px; */
   margin: 10px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition */
+  text-align: center;
 }
 
 #clearButton {
-  background-color: #ffffff;
-  color: #ff0000;
+  background-color: #9a8c98;
+  color: #22223b;
 }
 
 #clearButton:hover {
-  color: #ffffff;
-  background-color: #ff0000;
+  color: #f2e9e4;
+  background-color: #22223b;
 }
 
 #submitButton {
-  background-color: #1c9700;
-  color: #ffffff;
+  background-color: #4a4e69;
+  color: #f2e9e4;
 }
 
 #submitButton:hover {
-  background-color: #20af00;
-  color: #ffffff;
+  background-color: #22223b;
+  color: #f2e9e4;
 }
 
 /* response display stuff */
@@ -57,20 +103,27 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #000000;
-  background-color: #ffffff;
-  padding: 5px;
-  margin: 10px;
+  /* border: 2px solid #000000; */
+  border: 1px solid transparent; /* Transparent border */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow */
+  padding: 20px;
+  margin: 20px;
+  background-color: #f2e9e4;
+  /* padding: 5px;
+  margin: 10px; */
 }
 
 .imageDisplay {
-  border: 2px solid #000000;
+  /* border: 2px solid #000000; */
   padding: 5px;
   margin: 10px;
   max-height: 40vh;
   /* below forces image to shrink to fit the image display container */
   display: flex;
   flex-shrink: 1;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Adds depth */
+  border-radius: 10px; /* Optional rounded corners */
 }
 
 .responseDisplay {

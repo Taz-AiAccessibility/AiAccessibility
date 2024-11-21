@@ -8,9 +8,9 @@ const AltTextContextInput = ({ altTextContext, setAltTextContext }) => {
 
   return (
     <div id='altTextContextInput' className='inputBox'>
-      <label htmlFor='altTextContext'>Alt Text Context </label>
-      <input type='text' id='altTextContext' name='altTextContext' value={altTextContext} onChange={handleChange}></input>
-      <p>Optional: provide guidance for the alt text generation. For example: vocabulary level to use, intended audience, etc. </p>
+      <label htmlFor='altTextContext'>Target Audience:</label>
+      <input type='text' id='altTextContext' name='altTextContext' placeholder='Optional' value={altTextContext} onChange={handleChange}></input>
+      <p>Who is your audience? Example: For Children, For Professionals </p>
     </div>
   );
 };
