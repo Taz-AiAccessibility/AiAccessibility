@@ -6,27 +6,64 @@ import ImageContextInput from '../components/ImageContextInput.jsx';
 import AltTextContextInput from '../components/AltTextContextInput.jsx';
 import UserInputButtons from '../components/UserInputButtons.jsx';
 
-const UserInputsContainer = ({imageURL, setImageURL, setServerResponse, setUserSubmitted}) => {
+const UserInputsContainer = ({
+  imageURL,
+  setImageURL,
+  setServerResponse,
+  setUserSubmitted,
+}) => {
   //input-specific state
   const [imageContext, setImageContext] = useState('');
   const [altTextContext, setAltTextContext] = useState('');
-  
-  //define fetch method 
-  const handleSubmit = () => {
-    //fetch request
-    //.then set Server Response
-    //set user submitted to true
-    const fakeResult = { simple: 'test', complex: 'detailed test' };
-    
-    setServerResponse(fakeResult);
-  }
+
+  //handleClearInputs
+  const handleClearInputs = () => {
+    setImageURL('');
+    setImageContext('');
+    setAltTextContext('');
+    setUserSubmitted(false)
+  };
+
+  //define fetch method
+  const handleSubmit = async () => {
+    try {
+      
+      const response = await fetch('http://localhost:3000/alt-text', {
+        method: 'POST', // HTTP Method
+        headers: {
+          'Content-Type': 'application/json', // Inform server about JSON payload
+        },
+        body: JSON.stringify({
+          userURL: imageURL,
+          imageContext: imageContext,
+          textContext: altTextContext,
+        }), // Convert data object to JSON
+      });
+
+      const data = await response.json();
+      setServerResponse(data);
+      setUserSubmitted(true);
+    } catch {
+      alert('Error fetching altText recommendation from handleSubmit');
+    }
+
+  };
 
   return (
     <div className='userInputsContainer'>
-      <ImageURLInput setImageURL={setImageURL} />
-      <ImageContextInput setImageContext={setImageContext}/>
-      <AltTextContextInput setAltTextContext={setAltTextContext} />
-      <UserInputButtons handleSubmit={handleSubmit}/>
+      <ImageURLInput setImageURL={setImageURL} imageURL={imageURL} />
+      <ImageContextInput
+        imageContext={imageContext}
+        setImageContext={setImageContext}
+      />
+      <AltTextContextInput
+        altTextContext={altTextContext}
+        setAltTextContext={setAltTextContext}
+      />
+      <UserInputButtons
+        handleSubmit={handleSubmit}
+        handleClearInputs={handleClearInputs}
+      />
     </div>
   );
 };
