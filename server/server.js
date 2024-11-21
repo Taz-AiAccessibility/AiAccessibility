@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import {
-  azureImageProcessing,
   openAiImageProcessing,
 } from './controllers/imageProcessingController.js';
 import openAiAltTextController from './controllers/openAiAltTextController.js';
+import userQueryTextController from './controllers/userQueryController.js'
 
 const { queryOpenAI } = openAiAltTextController;
-
+const { parseUserQuery } = userQueryTextController;
 //import is compatible everywhere,
 // where as "require" is only usable under certain circumstances so unless you are working
 //with a legacy codebase that already uses "require" you should use "import" instead.
@@ -20,20 +20,19 @@ app.use(express.json());
 
 app.post(
   '/alt-text',
-  //userQuery,
+  parseUserQuery,
   openAiImageProcessing,
   queryOpenAI,
   (req, res) => {
-    const altText = res.locals.altText;
+   // const simple = res.locals.simple;
     //const altText = 'alt test';
-    const details = res.locals.details;
+    //const complex = res.locals.complex;
     //const details = 'alt details';
     const analysisResult = res.locals.analysisResult;
-    console.log(analysisResult);
-    return res.status(200).json({ altText, details });
-  }
-);
-
+    // return res.status(200).json(analysisResult); 
+    return res.status(200).send(analysisResult);
+  });
+ 
 // app.post('/alt-text', (req, res) => {
 //   console.log('hello');
 //   res.status(200).json({ hello: 'hello' });

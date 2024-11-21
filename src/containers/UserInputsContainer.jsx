@@ -34,7 +34,7 @@ const UserInputsContainer = ({
           'Content-Type': 'application/json', // Inform server about JSON payload
         },
         body: JSON.stringify({
-          userURL: imageURL,
+          userUrl: imageURL,
           imageContext: imageContext,
           textContext: altTextContext,
         }), // Convert data object to JSON
