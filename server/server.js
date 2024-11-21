@@ -1,6 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-import { azureImageProcessing } from './controllers/imageProcessingController.js';
+import {
+  azureImageProcessing,
+  openAiImageProcessing,
+} from './controllers/imageProcessingController.js';
+import openAiAltTextController from './controllers/openAiAltTextController.js';
+
+const { queryOpenAI } = openAiAltTextController;
 
 //import is compatible everywhere,
 // where as "require" is only usable under certain circumstances so unless you are working
@@ -15,16 +21,16 @@ app.use(express.json());
 app.post(
   '/alt-text',
   //userQuery,
-  azureImageProcessing,
-  // openAiController middleware next
+  openAiImageProcessing,
+  queryOpenAI,
   (req, res) => {
-    //const altText = res.locals.altText;
+    const altText = res.locals.altText;
     //const altText = 'alt test';
-    //const details = res.locals.details;
+    const details = res.locals.details;
     //const details = 'alt details';
     const analysisResult = res.locals.analysisResult;
     console.log(analysisResult);
-    res.status(200).json(res.locals.analysisResult);
+    return res.status(200).json({ altText, details });
   }
 );
 

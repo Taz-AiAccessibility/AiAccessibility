@@ -9,7 +9,9 @@ const openai = new OpenAI({
 const AZURE_ENDPOINT = process.env.AZURE_ENDPOINT;
 const AZURE_API_KEY = process.env.AZURE_API_KEY;
 
-async function openAiDescription(imageUrl) {
+export const openAiImageProcessing = async (req, res, next) => {
+  const imageUrl = 'https://www.smuinballet.org/app/uploads/maggie-scaled.jpg';
+
   const response = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
     temperature: 0.7, // Controls randomness of the response
@@ -29,8 +31,15 @@ async function openAiDescription(imageUrl) {
       },
     ],
   });
-  return response.choices[0];
-}
+  console.log({ response });
+  console.log('response from open ai', response.choices[0]);
+  const data = response.choices[0].message.content;
+
+  console.log('data from open ai', data);
+
+  res.locals.imageAnalysis = data;
+  return next();
+};
 
 // Middleware function to analyze an image using Azure Computer Vision
 export const azureImageProcessing = async (req, res, next) => {
@@ -57,15 +66,15 @@ export const azureImageProcessing = async (req, res, next) => {
       }
     );
 
-    const response2 = await openAiDescription(imageUrl);
+    //const response2 = await openAiDescription(imageUrl);
 
     // Attach the result to the request object for further processing
     const { data } = response;
     console.log('data from azure', data);
     console.log('description/caption', data.description.captions);
-    console.log({ response2 });
-    res.locals.analysisResult = data;
-    next(); // Pass control to the next middleware or route handler
+    // console.log({ response2 });
+    res.locals.imageAnalysis = data;
+    return next(); // Pass control to the next middleware or route handler
   } catch (error) {
     console.error('Error analyzing image:', error.message);
     res.status(500).json({ error: 'Failed to analyze image' });

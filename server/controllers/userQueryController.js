@@ -16,7 +16,7 @@ userQueryController.parseUserQuery = async (req, res, next) => {
   //check if the body contains image context and text context, give it a default value if it doesnt exisit
 
   const userUrl = req.body.userURL;
-  const imageContext = req.body.imageContext || 'no image conext provided';
+  const imageContext = req.body.imageContext || 'no image context provided';
   const textContext = req.body.textContext || 'no text content provided';
 
   res.locals.userUrl = userUrl;
