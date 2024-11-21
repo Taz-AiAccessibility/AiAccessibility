@@ -1,0 +1,86 @@
+/* overall page display stuff */
+body {
+  background-color: #009cc4;
+}
+
+/* user input display stuff */
+.userInputsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 10px;
+}
+
+/*All 3 input boxes fall under inputBox class */
+.inputBox {
+  border: 2px solid #000000;
+  padding: 5px;
+  margin: 10px;
+}
+
+.userInputButtons {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 5px;
+  margin: 10px;
+}
+
+#clearButton {
+  background-color: #ffffff;
+  color: #ff0000;
+}
+
+#clearButton:hover {
+  color: #ffffff;
+  background-color: #ff0000;
+}
+
+#submitButton {
+  background-color: #1c9700;
+  color: #ffffff;
+}
+
+#submitButton:hover {
+  background-color: #20af00;
+  color: #ffffff;
+}
+
+/* response display stuff */
+.responseDisplayContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+  padding: 5px;
+  margin: 10px;
+}
+
+.imageDisplay {
+  border: 2px solid #000000;
+  padding: 5px;
+  margin: 10px;
+  max-height: 40vh;
+  /* below forces image to shrink to fit the image display container */
+  display: flex;
+  flex-shrink: 1;
+}
+
+.generatedTextContainer {
+  border: 2px solid #000000;
+  padding: 5px;
+  margin: 10px;
+}
+
+.responseDisplay {
+  border: 2px solid #000000;
+  padding: 5px;
+  margin: 10px;
+}
