@@ -16,7 +16,7 @@ function App() {
     complex: 'default',
   });
   //userSubmitted state tracks whether or not a user has submitted their request - this determines whether or not the Response Display Container renders
-  const [userSubmitted, setUserSubmitted] = useState(true);
+  const [userSubmitted, setUserSubmitted] = useState(false);
 
   return (
     <div className='fullPage'>
@@ -27,11 +27,10 @@ function App() {
         setServerResponse={setServerResponse}
         setUserSubmitted={setUserSubmitted}
       />
-      <ResponseDisplayContainer
-        userSubmitted={userSubmitted}
+      {userSubmitted && <ResponseDisplayContainer
         serverResponse={serverResponse}
         imageURL={imageURL}
-      />
+      />}
     </div>
   );
 }
