@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+// axios
+
+//import top level components/containers that make up the page
+import Header from './components/Header.jsx';
+import UserInputsContainer from './containers/UserInputsContainer.jsx';
+import ResponseDisplayContainer from './containers/ResponseDisplayContainer.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  //hardcoded example image for testing
+  const exampleImage = 'https://lumiere-a.akamaihd.net/v1/images/p_findingnemo_19752_05271d3f.jpeg'
+
+  const [imageURL, setImageURL] = useState(exampleImage);
+  const [serverResponse, setServerResponse] = useState({
+    simple: 'default',
+    complex: 'default',
+  });
+  //userSubmitted state tracks whether or not a user has submitted their request - this determines whether or not the Response Display Container renders
+  const [userSubmitted, setUserSubmitted] = useState(true);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className='fullPage'>
+      <Header />
+      <UserInputsContainer
+        imageURL={imageURL}
+        setImageURL={setImageURL}
+        setServerResponse={setServerResponse}
+        setUserSubmitted={setUserSubmitted}
+      />
+      <ResponseDisplayContainer
+        userSubmitted={userSubmitted}
+        serverResponse={serverResponse}
+        imageURL={imageURL}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
