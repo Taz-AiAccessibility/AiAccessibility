@@ -13,8 +13,8 @@ const longResponse = "Marlin and Dory, the two main characters of Finding Nemo, 
   return (
     <div className='responseDisplayContainer'>
       <ImageDisplay imageURL={imageURL}/>
-      <ResponseDisplay key={'1'} responseType={'Brief Alt Text'} responseText={serverResponse.altText} />
-      <ResponseDisplay key={'2'} responseType={'Detailed Alt Text'} responseText={serverResponse.details}/>
+      <ResponseDisplay key={'1'} responseType={'Brief Alt Text'} responseText={serverResponse.simple} />
+      <ResponseDisplay key={'2'} responseType={'Detailed Alt Text'} responseText={serverResponse.complex}/>
     </div>
   );
 };

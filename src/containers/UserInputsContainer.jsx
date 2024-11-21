@@ -16,7 +16,7 @@ const UserInputsContainer = ({imageURL, setImageURL, setServerResponse, setUserS
     //fetch request
     //.then set Server Response
     //set user submitted to true
-    const fakeResult = { altText: 'test', details: 'detailed test' };
+    const fakeResult = { simple: 'test', complex: 'detailed test' };
     
     setServerResponse(fakeResult);
   }
