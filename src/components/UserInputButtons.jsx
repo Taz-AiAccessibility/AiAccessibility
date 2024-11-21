@@ -1,15 +1,16 @@
 import React from 'react';
 
-const UserInputButtons = () => {
+const UserInputButtons = ({ handleSubmit, handleClearInputs}) => {
+
   return (
     <div className='userInputButtons'>
       <div>
-        <button id='clearButton' className='button'>
+        <button id='clearButton' className='button' onClick={handleClearInputs}>
           Clear Inputs
         </button>
       </div>
       <div>
-        <button id='submitButton' className='button'>
+        <button id='submitButton' className='button' onClick={ handleSubmit }>
           Submit
         </button>
       </div>

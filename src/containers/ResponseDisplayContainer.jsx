@@ -5,18 +5,28 @@ import { useState } from 'react';
 import ImageDisplay from '../components/ImageDisplay.jsx';
 import ResponseDisplay from '../components/ResponseDisplay.jsx';
 
-const ResponseDisplayContainer = ({imageURL, serverResponse, userSubmitted}) => {
+const ResponseDisplayContainer = ({
+  imageURL,
+  serverResponse
+}) => {
+  console.log({ serverResponse });
 
-  if(userSubmitted){
-  return (
-    <div className='responseDisplayContainer'>
-      <ImageDisplay imageURL={imageURL}/>
-      <ResponseDisplay key={'1'} responseType={'Brief Alt Text'} responseText={serverResponse.simple} />
-      <ResponseDisplay key={'2'} responseType={'Detailed Alt Text'} responseText={serverResponse.complex}/>
-    </div>
-  );
-}
-else return;
+
+    return (
+      <div className='responseDisplayContainer'>
+        <ImageDisplay imageURL={imageURL} />
+        <ResponseDisplay
+          key={'1'}
+          responseType={'Brief Alt Text'}
+          responseText={serverResponse.simple}
+        />
+        <ResponseDisplay
+          key={'2'}
+          responseType={'Detailed Alt Text'}
+          responseText={serverResponse.complex}
+        />
+      </div>
+    );
 };
 
 export default ResponseDisplayContainer;
