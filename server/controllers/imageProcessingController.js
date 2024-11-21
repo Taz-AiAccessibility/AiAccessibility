@@ -7,7 +7,7 @@ const openai = new OpenAI({
 });
 
 export const openAiImageProcessing = async (req, res, next) => {
-  const imageUrl = 'https://www.humanesociety.org/sites/default/files/styles/360_max_width/public/2018/08/fawn-deer-272319_0.jpg?itok=RAcMGyqT';
+  const userUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu2Vea7dgtTPHYBB9zKLbeoYR5uzaCl9GbHA&s';
 
   const response = await openai.chat.completions.create({
     model: 'gpt-4o-mini',
@@ -20,7 +20,7 @@ export const openAiImageProcessing = async (req, res, next) => {
           {
             type: 'image_url',
             image_url: {
-              url: imageUrl,
+              url: userUrl,
               detail: 'low',
             },
           },
@@ -32,27 +32,27 @@ export const openAiImageProcessing = async (req, res, next) => {
   console.log('response from open ai', response.choices[0]);
   const data = response.choices[0].message.content;
 
-  console.log('data from open ai', data);
-
   res.locals.imageAnalysis = data;
-  console.log(data)
+  console.log('IMAGE ANALYSIS RESULT!!!!!!!!!!!!!:', data)
   return next();
 };
 
 // Middleware function to analyze an image using Azure Computer Vision
 export const azureImageProcessing = async (req, res, next) => {
-  //const { imageUrl } = req.body;
+  // uncomment this line when its time to connect front and back rather than hard code the test examples
+  //const { userUrl } = req.body;
 
-  const imageUrl = 'https://www.smuinballet.org/app/uploads/maggie-scaled.jpg';
 
-  if (!imageUrl) {
+  const userUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu2Vea7dgtTPHYBB9zKLbeoYR5uzaCl9GbHA&s';
+
+  if (!userUrl) {
     return res.status(400).json({ error: 'Image URL is required' });
   }
 
   try {
     const response = await axios.post(
       `${AZURE_ENDPOINT}/vision/v3.2/analyze`,
-      { url: imageUrl }, // Send image URL to Azure
+      { url: userUrl }, // Send image URL to Azure
       {
         headers: {
           'Ocp-Apim-Subscription-Key': AZURE_API_KEY,
@@ -63,8 +63,6 @@ export const azureImageProcessing = async (req, res, next) => {
         },
       }
     );
-
-    //const response2 = await openAiDescription(imageUrl);
 
     // Attach the result to the request object for further processing
     const { data } = response;

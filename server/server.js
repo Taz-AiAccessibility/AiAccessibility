@@ -24,16 +24,15 @@ app.post(
   openAiImageProcessing,
   queryOpenAI,
   (req, res) => {
-    const simple = res.locals.simple;
+   // const simple = res.locals.simple;
     //const altText = 'alt test';
-    const complex = res.locals.complex;
+    //const complex = res.locals.complex;
     //const details = 'alt details';
     const analysisResult = res.locals.analysisResult;
-    console.log(analysisResult);
-    return res.status(200).json({ simple, complex });
-  }
-);
-
+    // return res.status(200).json(analysisResult); 
+    return res.status(200).send(analysisResult);
+  });
+ 
 // app.post('/alt-text', (req, res) => {
 //   console.log('hello');
 //   res.status(200).json({ hello: 'hello' });
