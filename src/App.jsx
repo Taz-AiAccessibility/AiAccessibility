@@ -7,10 +7,8 @@ import UserInputsContainer from './containers/UserInputsContainer.jsx';
 import ResponseDisplayContainer from './containers/ResponseDisplayContainer.jsx';
 
 function App() {
-  //hardcoded example image for testing
-  const exampleImage = 'https://lumiere-a.akamaihd.net/v1/images/p_findingnemo_19752_05271d3f.jpeg'
 
-  const [imageURL, setImageURL] = useState(exampleImage);
+  const [imageURL, setImageURL] = useState('');
   const [serverResponse, setServerResponse] = useState({
     simple: 'default',
     complex: 'default',

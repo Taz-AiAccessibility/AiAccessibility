@@ -15,19 +15,20 @@ const UserInputsContainer = ({
   //input-specific state
   const [imageContext, setImageContext] = useState('');
   const [altTextContext, setAltTextContext] = useState('');
+  const [isUrlError, setIsUrlError] = useState(false); //this triggers if url is not a valid URL or if the URL is not an image
+  const [urlError, setUrlError] = useState(''); // this tells state which error has been triggered
 
   //handleClearInputs
   const handleClearInputs = () => {
     setImageURL('');
     setImageContext('');
     setAltTextContext('');
-    setUserSubmitted(false)
+    setUserSubmitted(false);
   };
 
   //define fetch method
   const handleSubmit = async () => {
     try {
-      
       const response = await fetch('http://localhost:3000/alt-text', {
         method: 'POST', // HTTP Method
         headers: {
@@ -46,12 +47,18 @@ const UserInputsContainer = ({
     } catch {
       alert('Error fetching altText recommendation from handleSubmit');
     }
-
   };
 
   return (
     <div className='userInputsContainer'>
-      <ImageURLInput setImageURL={setImageURL} imageURL={imageURL} />
+      <ImageURLInput
+        setImageURL={setImageURL}
+        imageURL={imageURL}
+        isUrlError={isUrlError}
+        setIsUrlError={setIsUrlError}
+        urlError={urlError}
+        setUrlError={setUrlError}
+      />
       <ImageContextInput
         imageContext={imageContext}
         setImageContext={setImageContext}
