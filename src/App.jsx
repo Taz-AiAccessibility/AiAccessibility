@@ -10,7 +10,7 @@ function App() {
   //hardcoded example image for testing
   const exampleImage = 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/whitetail-deer-fawn-in-field-of-indian-jimkruger.jpg'
 
-  const [imageURL, setImageURL] = useState(exampleImage);
+  const [imageURL, setImageURL] = useState('');
   const [serverResponse, setServerResponse] = useState({
     simple: 'default',
     complex: 'default',

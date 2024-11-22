@@ -35,7 +35,6 @@ export const openAiImageProcessing = async (req, res, next) => {
     res.locals.imageAnalysis = data;
     res.locals.imageContext = imageContext;
     res.locals.textContext = textContext;
-    console.log('IMAGE ANALYSIS RESULT!!!!!!!!!!!!!:', data);
     return next();
   } catch (error) {
     console.error('Error analyzing image:', error.message);
