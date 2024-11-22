@@ -9,7 +9,7 @@ const ImageContextInput = ({ imageContext, setImageContext } ) => {
     <div id='imageContextInput' className='inputBox'>
       <label htmlFor='imageContext'>Image Details: </label>
       <input type='text' id='imageContext' name='imageContext' placeholder='Optional' value={imageContext} onChange={handleChange}></input>
-      <p>Provide additional information about the image. For example, names of people or places, dates, etc.</p>
+      <p className='additionalText'>Additional information about the image. For example, names of people or places, dates, etc.</p>
     </div>
   );
 };

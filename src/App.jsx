@@ -8,7 +8,7 @@ import ResponseDisplayContainer from './containers/ResponseDisplayContainer.jsx'
 
 function App() {
   //hardcoded example image for testing
-  const exampleImage = 'https://lumiere-a.akamaihd.net/v1/images/p_findingnemo_19752_05271d3f.jpeg'
+  const exampleImage = 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/whitetail-deer-fawn-in-field-of-indian-jimkruger.jpg'
 
   const [imageURL, setImageURL] = useState(exampleImage);
   const [serverResponse, setServerResponse] = useState({

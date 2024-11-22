@@ -9,8 +9,9 @@ const ImageURLInput = ({imageURL, setImageURL}) => {
 
   return (
     <div id='imageURLInput' className='inputBox'>
-      <label htmlFor='imageURL'>Image URL: </label>
+      <label className='URLLabel' htmlFor='imageURL'>Image URL: </label>
       <input type='text' id='imageURL' name='imageURL' value={imageURL} onChange={handleChange}></input>
+      <p className='additionalText'>Paste image URL.</p>
     </div>
   );
 };
