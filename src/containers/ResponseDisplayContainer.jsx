@@ -17,7 +17,7 @@ const ResponseDisplayContainer = ({
         <ImageDisplay imageURL={imageURL} />
         <ResponseDisplay
           key={'1'}
-          responseType={'Brief Alt Text'}
+          responseType={'Simple Alt Text'}
           responseText={serverResponse.simple}
         />
         <ResponseDisplay

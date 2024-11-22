@@ -27,7 +27,7 @@ const ImageURLInput = ({
 
   return (
     <div id='imageURLInput' className='inputBox'>
-      <label htmlFor='imageURL'>Image URL: </label>
+      <label className='URLLabel' htmlFor='imageURL'>Image URL: </label>
       <input
         type='text'
         id='imageURL'
@@ -47,6 +47,7 @@ const ImageURLInput = ({
           {urlError}
         </p>
       )}
+      <p className='additionalText'>Paste image URL.</p>
     </div>
   );
 };

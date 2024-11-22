@@ -7,6 +7,8 @@ import UserInputsContainer from './containers/UserInputsContainer.jsx';
 import ResponseDisplayContainer from './containers/ResponseDisplayContainer.jsx';
 
 function App() {
+  //hardcoded example image for testing
+  const exampleImage = 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/whitetail-deer-fawn-in-field-of-indian-jimkruger.jpg'
 
   const [imageURL, setImageURL] = useState('');
   const [serverResponse, setServerResponse] = useState({
@@ -14,7 +16,7 @@ function App() {
     complex: 'default',
   });
   //userSubmitted state tracks whether or not a user has submitted their request - this determines whether or not the Response Display Container renders
-  const [userSubmitted, setUserSubmitted] = useState(true);
+  const [userSubmitted, setUserSubmitted] = useState(false);
 
   return (
     <div className='fullPage'>

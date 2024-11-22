@@ -1,8 +1,8 @@
 /* overall page display stuff */
 body {
-  background-color: #f2e9e47a;
-  color: #22223b;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #283618;
+  color: #606c38;
+  font-family: Arial;
 }
 
 /* user input display stuff */
@@ -10,50 +10,59 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 2px solid #000000; */
   border: 1px solid transparent; /* Transparent border */
   border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 0 20px rgba(200, 183, 183, 0.5); /* Glow effect */
+  box-shadow: 0 0 20px rgba(183, 200, 194, 0.296); /* Glow effect */
   padding: 20px;
   margin: 20px;
-  background-color: #f2e9e4;
-  /* padding: 5px; */
-  /* margin: 10px; */
+  background-color: #fefae0;
 }
 
 /*All 3 input boxes fall under inputBox class */
 .inputBox {
-  /* border: 2px solid #000000; */
   border: none; /* Optional: Remove border */
   border-radius: 10px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06); Layered shadow */
-  padding: 20px;
-  background-color: #f2e9e4; /* Add background for card-like effect */
-  /* padding: 5px; */
+  padding: 30px;
+  background-color: #fefae0; /* Add background for card-like effect */
   margin: 10px;
+  width: 90%;
+  height: 100px;
+}
+
+.additionalText {
+  font-size: 16px;
+  font-style: italic;
+  color: #dda15e;
+  font-weight: 400;
 }
 
 label {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: #a6642a;
   display: block;
   margin-bottom: 8px;
   /* transition: all 0.3s ease; */
 }
-#imageURLInput {
+
+/* color- 283618 */
+
+/* .URLLabel {
+  font-weight: 600;
+} */
+#imageURL {
   width: 80%;
-  height: 50px;
+  height: 30px;
 }
 input {
   width: 80%;
-  height: 30px;
+  height: 50px;
   padding: 12px;
   font-size: 16px;
-  border: 2px solid #ccc;
+  border: 2px solid #c4cbaf;
   border-radius: 5px;
-  background-color: #fff;
-  color: #22223b;
+  background-color: #fefae0;
+  color: #283618;
   /* transition: all 0.3s ease; */
 }
 
@@ -68,7 +77,7 @@ input {
 .button {
   /* padding: 5px; */
   margin: 10px;
-  font-family: 'Arial', sans-serif;
+
   font-size: 16px;
   padding: 10px 20px;
   border: 2px solid transparent;
@@ -79,22 +88,22 @@ input {
 }
 
 #clearButton {
-  background-color: #9a8c98;
-  color: #22223b;
+  background-color: #dda15e;
+  color: #283618;
 }
 
 #clearButton:hover {
   color: #f2e9e4;
-  background-color: #22223b;
+  background-color: #283618;
 }
 
 #submitButton {
-  background-color: #4a4e69;
-  color: #f2e9e4;
+  background-color: #606c38;
+  color: #fefae0;
 }
 
 #submitButton:hover {
-  background-color: #22223b;
+  background-color: #283618;
   color: #f2e9e4;
 }
 
@@ -109,7 +118,7 @@ input {
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow */
   padding: 20px;
   margin: 20px;
-  background-color: #f2e9e4;
+  background-color: #fefae0;
   /* padding: 5px;
   margin: 10px; */
 }
@@ -118,7 +127,8 @@ input {
   /* border: 2px solid #000000; */
   padding: 5px;
   margin: 10px;
-  max-height: 40vh;
+  max-height: 50%;
+  max-width: 80%;
   /* below forces image to shrink to fit the image display container */
   display: flex;
   flex-shrink: 1;
@@ -126,8 +136,61 @@ input {
   border-radius: 10px; /* Optional rounded corners */
 }
 
+.imageDisplay img {
+  width: 100%; /* Ensure the image fills the container */
+  height: 100%; /* Maintain full height */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
 .responseDisplay {
-  border: 2px solid #000000;
-  padding: 5px;
-  margin: 10px;
+  /* padding: 20px; Space inside the div */
+  margin: 20px; /* Space around the div */
+  /* background-color: #f9f9f9; /* Light background color */
+  /* border: 1px solid #ddd; Subtle border */
+  /* border-radius: 30px; Rounded corners */
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Soft shadow */
+  width: 80%;
+  height: auto;
+  /* max-width: 800px; /* Limit width for readability  */
+  /* color: #333; Text color */
+  /* line-height: 1.8; */
+  align-self: flex-start;
+  /* background-color: red; */
+}
+
+p {
+  font-size: 18px; /* Sets the font size for readability */
+  line-height: 1.6; /* Adjusts the space between lines for clarity */
+  color: #19220e; /* Dark gray text for better readability */
+  margin-bottom: 20px; /* Adds space below each paragraph */
+  text-align: justify; /* Justifies text for a clean block layout */
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2px;
+}
+
+.header-title {
+  color: #fefae0;
+  flex: 1; /* Allow the title to take up remaining space */
+  text-align: center; /* Center the text */
+  margin: 0; /* Remove default margins */
+  font-size: 30px; /* Set font size */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.header-subtitle {
+  color: #fefae0;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+}
+.header-logo {
+  height: 100px;
+  width: auto;
+  align-self: flex-start;
 }
