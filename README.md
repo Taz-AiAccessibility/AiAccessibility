@@ -1,6 +1,6 @@
 # Alt Sprout
 
-Alt Sprout is an AI-driven alt text generator that leverages state-of-the-art technologies to create meaningful and accessible descriptions for images. Built with scalability, performance, and accessibility in mind, Alt Sprout integrates advanced AI models with modern web development tools.
+Alt Sprout is an AI-driven alt text generator that leverages OpenAI technologies to create meaningful and accessible descriptions for images. Built with scalability, performance, and accessibility in mind, Alt Sprout integrates advanced AI models with modern web development tools.
 
 ---
 
